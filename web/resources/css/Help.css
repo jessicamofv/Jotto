@@ -1,0 +1,31 @@
+/* 
+    Document   : Help
+    Created on : Oct 26, 2013, 2:23:35 AM
+    Author     : Jessica
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#topPanel
+{
+    text-align:center;
+}
+
+#game_title
+{
+    text-align:center;
+    font-size:18pt;
+    color:#990011;
+    position:relative;
+    top:10px;
+}
+
+#game_description
+{
+    text-align:left;
+    font-size:12pt;
+    color:#000000;
+    position:relative;
+    top:15px;
+}
+

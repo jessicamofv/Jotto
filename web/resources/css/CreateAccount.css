@@ -1,0 +1,64 @@
+/* 
+    Document   : CreateAccount
+    Created on : Oct 24, 2013, 8:00:27 AM
+    Author     : Jessica
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#pageContent
+{
+    position:relative;
+    top:185px;
+}
+
+#createAccountHeader, #buttonDiv
+{
+    text-align:center;
+}
+
+#fnameDiv
+{
+    position:relative;
+    left:579px;
+    width:270px;
+}
+
+#lnameDiv
+{
+    position:relative;
+    left:581px;
+    width:270px;
+}
+
+#usernameDiv
+{
+    position:relative;
+    left:586px;
+    width:270px;
+}
+
+#passwordDiv
+{
+    position:relative;
+    left:589px;
+    width:270px;
+}
+
+#passwordvDiv
+{
+    position:relative;
+    left:536px;
+    width:270px;
+}
+
+#fnameDiv, #lnameDiv, #usernameDiv, #passwordDiv, #passwordvDiv
+{
+    margin:5px;
+}
+
+#messageDiv
+{
+    color:red;
+}
+

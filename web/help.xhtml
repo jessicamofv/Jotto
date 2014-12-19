@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Jotto - The Five Letter Word Game</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/Help.css" />
+    </h:head>
+    <h:body>
+        <h:form id="pageNav">
+            <div id="topPanel">
+                <h:commandLink id="gameScreen" action="game">
+                    <h:graphicImage name="images/Game.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="statsScreen" action="stats">
+                    <h:graphicImage name="images/Stats.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="helpScreen" action="help">
+                    <h:graphicImage name="images/Help.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="logOut" action="#{usermanager.logout}">
+                    <h:graphicImage name="images/LogOut.png" />
+                </h:commandLink>
+            </div>
+        </h:form>
+        
+        <div id="game_title">Jotto</div>
+        
+        <div id="game_description">
+            <p>Jotto is a fun word game where you have to guess a secret 5-letter 
+            word by asking how many letters from other 5 letter words are in
+            the secret word. Note that the secret word may not have repeating
+            characters, but in this version of the game, the words you ask can.</p>
+            
+            <p>For example, suppose the secret word was <strong>phone</strong>. If
+            I were to start with the word <strong>tooth</strong>, then the game 
+            would tell me 3 of my letters are in the secret word. This would lead
+            me to belive that the letter <strong>h</strong> is definitely in the
+            secret word, and furthermore, either <strong>t</strong> or <strong>o</strong>
+            as well. Through the power of deduction, one must try to guess the
+            secret word in as few guesses as possible.</p>
+            
+            <p>Note that at the bottom of the game area there is an alphabet.
+            This should help you keep track of which letters you are certain are
+            part of the word or not.</p>
+            
+            <p>Jotto was invented by Morton Rosenfeld in 1955. See <a href="http://en.wikipedia.org/wiki/Jotto">Wikipedia</a>
+            for more.</p>
+        </div>
+    </h:body>
+</html>
+

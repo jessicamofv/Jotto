@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/Login.css" />
+    </h:head>
+    <h:body>
+        <div id="splashScreen">
+            <h:graphicImage name="images/JottoSplashScreen.png" />
+        </div>
+        <h:form id="login">
+            <div id="userInfo">
+                <div id="userNameDiv">
+                    Username: <h:inputText id="username" value="#{usermanager.username}"/>
+                </div>
+                <div id="passwordDiv">
+                    Password: <h:inputSecret id="password" value="#{usermanager.password}"/>
+                </div>
+            </div><br />
+            <div id="buttonDiv">
+                <h:commandButton id="submit" type="submit" value="Login" action="#{usermanager.validateUser}" />&nbsp;
+                <h:commandButton id="createAccount" value ="Create New Account" action="createAccount" />
+            </div>
+            <br />
+            <div id="messageDiv" align="center">
+                <h:messages layout="table" showDetail="true"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>

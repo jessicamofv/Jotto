@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Jotto - The Five Letter Word Game</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/Stats.css" />
+    </h:head>
+    <h:body>
+        <h:form id="pageNav">
+            <div id="topPanel">
+                <h:commandLink id="gameScreen" action="game">
+                    <h:graphicImage name="images/Game.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="statsScreen" action="stats">
+                    <h:graphicImage name="images/Stats.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="helpScreen" action="help">
+                    <h:graphicImage name="images/Help.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="logOut" action="#{usermanager.logout}">
+                    <h:graphicImage name="images/LogOut.png" />
+                </h:commandLink>
+            </div>
+        </h:form>
+        
+        <div id="stats_summary">
+            <h1 id="heading">Jotto - Game Session Stats</h1>
+            <hr />
+            <h:panelGrid id="game_stats" columns="2" border="0" cellpadding="5px">
+                Games Played: <h:outputText class="stat" value="#{gamemanager.gamesPlayed}" />
+                Wins: <h:outputText class="stat" value="#{gamemanager.wins}" />
+                Losses: <h:outputText class="stat" value="#{gamemanager.losses}" />
+                Fewest Guesses Win: <h:outputText class="stat" value="#{gamemanager.fewestGuessesWin}" />
+                Fastest Win: <h:outputText class="stat" value="#{gamemanager.fastestWin}" />
+            </h:panelGrid>
+            <hr />
+            <br />
+        </div>
+            
+        <div id="game_results">
+            <h2 id="game_results_header">GAME RESULTS</h2>
+        
+            <ol id="game_results_list">
+                <h:outputText id="gameResults" value="#{gamemanager.gameResults}" escape="false"/>
+            </ol>
+        </div>
+    </h:body>
+</html>
+

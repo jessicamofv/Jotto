@@ -1,0 +1,85 @@
+/* 
+    Document   : Game
+    Created on : Oct 25, 2013, 10:53:18 PM
+    Author     : Jessica
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#topPanel
+{
+    text-align:center;
+}
+
+#game_header
+{
+    font-size:19pt;
+}
+
+#guesses_subheader
+{
+    font-size:14pt;
+}
+
+#guessPanel
+{
+    overflow:auto;
+    height:347px;
+}
+
+#guesses_list
+{
+    font-family: monospace;
+    font-size:14pt;
+}
+
+#win_display
+{
+    font-size:14pt;
+}
+
+#bottomPanel
+{
+    position:relative;
+    background-color:lightgray;
+}
+
+#guess_div
+{
+    font-size:17pt;
+    color:#4A4A4A;
+    text-align:center;
+}
+
+#buttonSpan
+{
+    position:relative;
+    top:24px;
+}
+
+#messageDiv
+{
+    font-size:15pt;
+    color:red;
+}
+
+#letters
+{
+    text-align:center;
+    font-size:17pt;
+}
+
+.grayLetter
+{
+    background-color:lightgray;
+}
+
+.greenLetter
+{
+    background-color:#00FF00;
+}
+
+.redLetter
+{
+    background-color:red;
+}

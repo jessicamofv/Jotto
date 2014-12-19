@@ -1,0 +1,39 @@
+/* 
+    Document   : Stats
+    Created on : Oct 26, 2013, 1:20:03 AM
+    Author     : Jessica
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#topPanel
+{
+    text-align:center;
+}
+
+#heading
+{
+    font-size:19pt;
+}
+
+#game_stats
+{
+    font-size:12pt;
+    font-weight:bold;
+    color:orange;
+}
+
+.stat
+{
+    font-weight:normal;
+}
+
+#game_results_header
+{
+    font-size:14pt;
+}
+
+#game_results_list
+{
+    font-size:12pt;
+}

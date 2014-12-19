@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Jotto - The Five Letter Word Game</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="css/Game.css" />
+        
+        <script>
+            function keyDown(e){
+                var ev = e||event;
+                var key = ev.which||ev.keyCode;
+                if (ev.ctrlKey)
+                {
+                    if (key === 67)
+                        document.title = "#{gamemanager.cheatText}";
+                }
+            };
+            
+            window.onload = function(){
+                if(window.addEventListener)
+                    window.addEventListener('keydown', keyDown, false);
+                else if(document.body.attachEvent)
+                    document.body.attachEvent('onKeyDown', keyDown);
+                else
+                    document.onkeydown = keyDown;
+            };
+        </script>
+    </h:head>
+    <h:body>
+        <h:form id="pageNav">
+            <div id="topPanel">
+                <h:commandLink id="gameScreen" action="game">
+                    <h:graphicImage name="images/Game.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="statsScreen" action="stats">
+                    <h:graphicImage name="images/Stats.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="helpScreen" action="help">
+                    <h:graphicImage name="images/Help.png" />
+                </h:commandLink>&nbsp;
+                <h:commandLink id="logOut" action="#{usermanager.logout}">
+                    <h:graphicImage name="images/LogOut.png" />
+                </h:commandLink>
+            </div>
+        </h:form>
+        
+        <h1 id="game_header">JOTTO - Guess the Word</h1>
+        <hr />
+        
+        <h:form id="guesses">
+            <div>
+                <h2 id="guesses_subheader">
+                    <h:outputText id="subheaderText" value="#{gamemanager.subheaderText}"/>
+                </h2>
+                <div id="guessPanel">
+                    <ol id="guesses_list">
+                        <h:outputText id="guessedWords" value="#{gamemanager.guessedWords}" escape="false"/>
+                    </ol>
+                    <h2 id="win_display">
+                        <h:outputText id="winMessage" value="#{gamemanager.winMessage}" escape="false" />
+                    </h2>
+                </div>
+            </div>
+        </h:form>
+        <div id ="bottomPanel">
+            <br />
+            <h:form id="guess_form">
+                <div id ="guess_div">
+                    <div id="messageDiv" align="center">
+                        <h:messages layout="table" showDetail="true"/>
+                    </div>
+                    <!--<div align="center">
+                        <h:messages layout="table" showDetail="true" />
+                    </div>-->
+                    Guess: <h:inputText id="guess" value="#{gamemanager.guess}" />&nbsp;
+                    <span id="buttonSpan">
+                        <h:commandLink id="submit" type="submit">
+                            <h:graphicImage name="images/EnterGuess.png" />
+                            <f:ajax event="action" execute="guess_form" render=":guesses:subheaderText :guesses:guessedWords :guesses:winMessage @form" listener="#{gamemanager.processGuess}" />
+                        </h:commandLink>&nbsp;
+                        <h:commandLink id="new_game" action="#{gamemanager.startNewGame}">
+                            <h:graphicImage name="images/NewGame.png" />
+                        </h:commandLink>
+                    </span>
+                </div>
+            </h:form>
+            <br />
+            <br />
+            <div id="letters">
+                <span>
+                    <h:outputLabel id="letterA" class="#{gamemanager.AClass}">
+                        <h:outputText value="A"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterA" listener="#{gamemanager.changeAClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterB" class="#{gamemanager.BClass}">
+                        <h:outputText value="B"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterB" listener="#{gamemanager.changeBClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterC" class="#{gamemanager.CClass}">
+                        <h:outputText value="C"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterC" listener="#{gamemanager.changeCClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterD" class="#{gamemanager.DClass}">
+                        <h:outputText value="D"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterD" listener="#{gamemanager.changeDClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterE" class="#{gamemanager.EClass}">
+                        <h:outputText value="E"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterE" listener="#{gamemanager.changeEClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterF" class="#{gamemanager.FClass}">
+                        <h:outputText value="F"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterF" listener="#{gamemanager.changeFClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterG" class="#{gamemanager.GClass}">
+                        <h:outputText value="G"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterG" listener="#{gamemanager.changeGClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterH" class="#{gamemanager.HClass}">
+                        <h:outputText value="H"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterH" listener="#{gamemanager.changeHClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterI" class="#{gamemanager.IClass}">
+                        <h:outputText value="I"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterI" listener="#{gamemanager.changeIClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterJ" class="#{gamemanager.JClass}">
+                        <h:outputText value="J"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterJ" listener="#{gamemanager.changeJClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterK" class="#{gamemanager.KClass}">
+                        <h:outputText value="K"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterK" listener="#{gamemanager.changeKClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterL" class="#{gamemanager.LClass}">
+                        <h:outputText value="L"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterL" listener="#{gamemanager.changeLClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterM" class="#{gamemanager.MClass}">
+                        <h:outputText value="M"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterM" listener="#{gamemanager.changeMClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterN" class="#{gamemanager.NClass}">
+                        <h:outputText value="N"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterN" listener="#{gamemanager.changeNClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterO" class="#{gamemanager.OClass}">
+                        <h:outputText value="O"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterO" listener="#{gamemanager.changeOClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterP" class="#{gamemanager.PClass}">
+                        <h:outputText value="P"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterP" listener="#{gamemanager.changePClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterQ" class="#{gamemanager.QClass}">
+                        <h:outputText value="Q"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterQ" listener="#{gamemanager.changeQClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterR" class="#{gamemanager.RClass}">
+                        <h:outputText value="R"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterR" listener="#{gamemanager.changeRClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterS" class="#{gamemanager.SClass}">
+                        <h:outputText value="S"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterS" listener="#{gamemanager.changeSClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterT" class="#{gamemanager.TClass}">
+                        <h:outputText value="T"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterT" listener="#{gamemanager.changeTClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterU" class="#{gamemanager.UClass}">
+                        <h:outputText value="U"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterU" listener="#{gamemanager.changeUClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterV" class="#{gamemanager.VClass}">
+                        <h:outputText value="V"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterV" listener="#{gamemanager.changeVClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterW" class="#{gamemanager.WClass}">
+                        <h:outputText value="W"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterW" listener="#{gamemanager.changeWClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterX" class="#{gamemanager.XClass}">
+                        <h:outputText value="X"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterX" listener="#{gamemanager.changeXClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterY" class="#{gamemanager.YClass}">
+                        <h:outputText value="Y"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterY" listener="#{gamemanager.changeYClass}"/>
+                    </h:outputLabel>
+                </span>
+                <span>
+                    <h:outputLabel id="letterZ" class="#{gamemanager.ZClass}">
+                        <h:outputText value="Z"/>
+                        <f:ajax event="click" render=":guesses:guessedWords letterZ" listener="#{gamemanager.changeZClass}"/>
+                    </h:outputLabel>
+                </span>
+            </div>
+        </div>
+    </h:body>
+</html>
